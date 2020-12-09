@@ -1,0 +1,30 @@
+---
+- name: sample book
+  hosts: localhost
+  remote_user: root
+  become: true
+  tasks:
+          - cron:
+             name: deploy script
+             user: "root"
+             minute: "*/15"
+             job: "/bin/sh /root/usage_script.sh"
+
+
+          - name: install jdk 8
+            yum:
+              name:  java-1.8.0-openjdk
+              state: latest
+
+
+          - name: install epel-release
+            yum:
+                   name: epel-release
+                   state: latest
+          - name: install htop
+            yum:
+                    name: htop
+                    state: latest
+
+                   
+               
